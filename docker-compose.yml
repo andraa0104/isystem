@@ -1,0 +1,36 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: isystem-app
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      APP_ENV: production
+      APP_DEBUG: "false"
+      APP_URL: http://192.168.1.18:8080
+      ASSET_URL: http://192.168.1.18:8080
+    ports:
+      - "8080:80"
+    volumes:
+      - storage-data:/var/www/html/storage
+  queue:
+    image: isystem-app
+    restart: unless-stopped
+    profiles:
+      - queue
+    env_file: .env
+    environment:
+      APP_ENV: production
+      APP_DEBUG: "false"
+      APP_URL: http://192.168.1.18:8080
+      ASSET_URL: http://192.168.1.18:8080
+    command: ["php","artisan","queue:work","--tries=1"]
+    volumes:
+      - storage-data:/var/www/html/storage
+    depends_on:
+      - app
+
+volumes:
+  storage-data:

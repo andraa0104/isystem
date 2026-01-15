@@ -1,0 +1,23 @@
+services:
+  app:
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+    volumes:
+      - ./:/var/www/html
+      - storage-data:/var/www/html/storage
+    command: sh -c "php artisan optimize:clear && /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf"
+
+  vite:
+    image: node:20-alpine
+    working_dir: /app
+    command: sh -lc "npm install && npm run dev -- --host 0.0.0.0 --port 5173"
+    environment:
+      WAYFINDER_DISABLE: "1"
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./:/app
+
+volumes:
+  storage-data:
