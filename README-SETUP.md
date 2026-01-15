@@ -90,3 +90,9 @@ docker compose -f isystem/docker-compose.yml up -d --build
   ```
 - Untuk dev mode di WSL, jalankan perintah `docker compose` dari dalam Ubuntu WSL untuk performa file yang lebih baik.
 
+## untuk update ke github ketika ada pembaharuan file atau fitur baru
+```
+git add .
+git commit -m "update"
+git push
+```
