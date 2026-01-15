@@ -95,4 +95,15 @@ docker compose -f isystem/docker-compose.yml up -d --build
 git add -A
 git commit -m "update"
 git push
+
+```
+Di komputer yang sudah clone, untuk menyamakan dengan GitHub cukup lakukan:
+```
+git pull
+```
+Kalau ada perubahan lokal yang belum di-commit, bisa:
+```
+git stash
+git pull
+git stash pop
 ```
