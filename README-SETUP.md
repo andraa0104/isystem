@@ -92,7 +92,7 @@ docker compose -f isystem/docker-compose.yml up -d --build
 
 ## untuk update ke github ketika ada pembaharuan file atau fitur baru
 ```
-git add .
+git add -A
 git commit -m "update"
 git push
 ```
