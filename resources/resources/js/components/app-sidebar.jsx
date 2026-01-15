@@ -323,6 +323,20 @@ export function AppSidebar() {
                                         <SidebarMenuSubItem>
                                             <SidebarMenuSubButton asChild>
                                                 <Link href="#">
+                                                    <span>Vendor</span>
+                                                </Link>
+                                            </SidebarMenuSubButton>
+                                        </SidebarMenuSubItem>
+                                        <SidebarMenuSubItem>
+                                            <SidebarMenuSubButton asChild>
+                                                <Link href="#">
+                                                    <span>Customer</span>
+                                                </Link>
+                                            </SidebarMenuSubButton>
+                                        </SidebarMenuSubItem>
+                                        <SidebarMenuSubItem>
+                                            <SidebarMenuSubButton asChild>
+                                                <Link href="#">
                                                     <span>Material</span>
                                                 </Link>
                                             </SidebarMenuSubButton>

@@ -84,7 +84,6 @@
         "laravel": {
             "dont-discover": [
                 "laravel/mcp",
-                "laravel/wayfinder",
                 "laravel/roster",
                 "laravel/boost",
                 "laravel/pail"

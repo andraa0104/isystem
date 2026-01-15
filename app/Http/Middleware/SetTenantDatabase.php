@@ -32,15 +32,19 @@ class SetTenantDatabase
 
         if ($database && in_array($database, $allowed, true)) {
             $connection = config('tenants.connection', config('database.default'));
-            
+            $currentDatabase = config("database.connections.$connection.database");
+
             config(['database.default' => $connection]);
             DB::setDefaultConnection($connection);
-            config(["database.connections.$connection.database" => $database]);
-            DB::purge($connection);
-            try {
-                DB::reconnect($connection);
-            } catch (\Exception $e) {
-                // Ignore reconnection errors
+
+            if ($currentDatabase !== $database) {
+                config(["database.connections.$connection.database" => $database]);
+                DB::purge($connection);
+                try {
+                    DB::reconnect($connection);
+                } catch (\Exception $e) {
+                    // Ignore reconnection errors
+                }
             }
         }
 
